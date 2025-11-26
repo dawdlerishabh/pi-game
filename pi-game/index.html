@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="πetal - A serene, voxel-style Pi memorization challenge.">
+    <meta name="theme-color" content="#f0f2f5">
+
+    <title>πetal | Pi Memory Challenge</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,500&family=VT323&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>π</text></svg>">
+
+    <link rel="stylesheet" href="styles.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="script.js" defer></script>
+</head>
+<body class="mode-game">
+
+<main class="card" aria-label="Game Interface">
+    <header>
+        <h1><span>π</span>etal</h1>
+
+        <div class="mode-toggles" role="group" aria-label="Game Modes">
+            <button class="btn-pixel selected" id="btnGame" aria-pressed="true">Game</button>
+            <button class="btn-pixel" id="btnPractice" aria-pressed="false">Practice</button>
+        </div>
+
+        <div id="toast" role="alert" aria-live="polite">Max 400!</div>
+    </header>
+
+    <div class="xp-bar-container" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <div class="xp-fill" id="xpBar"></div>
+    </div>
+
+    <section class="settings-panel" aria-label="Game Settings">
+        <label for="limitInput" class="label-pixel">Scope</label>
+        <div class="slider-group">
+            <input type="range" id="limitSlider" min="5" max="400" value="400" step="5" aria-label="Range Slider">
+            <input type="number" id="limitInput" class="limit-input" min="5" max="400" value="400" aria-label="Manual Limit Input">
+            <button id="btnGo" class="btn-go" aria-label="Apply Limit">GO</button>
+        </div>
+    </section>
+
+    <section class="stage">
+        <div class="voxel-input" id="voxelBox" aria-hidden="true"></div>
+
+        <div class="ribbon-container" id="ribbonContainer" tabindex="0" aria-label="Digits display">
+            <span class="ribbon-prefix">3.</span><span id="ribbon"></span>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="stat-box">TIME: <span id="timer">0.0s</span></div>
+        <div class="stat-box"></div>
+    </footer>
+</main>
+
+<input type="text" inputmode="numeric" pattern="[0-9]*" id="hiddenInput" autocomplete="off" aria-label="Type Pi Digits Here" style="opacity: 0; position: absolute; pointer-events: none;">
+
+</body>
+</html>
